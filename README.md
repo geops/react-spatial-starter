@@ -7,7 +7,9 @@ This library provides a starter kit to create a web map application based on [Re
 * react
 * redux
 * react-router
-* Tests mit enzyme, jest, cypress
+* enzyme
+* jest
+* cypress
 * react-spatial
 * eslint with airbnb
 * prettier
