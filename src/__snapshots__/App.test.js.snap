@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App App should match snapshot. 1`] = `
+<div
+  className="app"
+>
+  <div
+    className="tm-app-component"
+  >
+    <div
+      className="tm-map"
+      role="menu"
+      tabIndex="-1"
+    />
+  </div>
+</div>
+`;

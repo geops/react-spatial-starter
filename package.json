@@ -1,0 +1,75 @@
+{
+  "name": "geops-react-spatial-starter",
+  "version": "0.1.0",
+  "private": true,
+  "main": "build/es/index.js",
+  "dependencies": {
+    "abortcontroller-polyfill": "1.2.3",
+    "canvas": "1.6.13",
+    "core-js": "2.6.3",
+    "jest": "23.6.0",
+    "lodash": "^4.17.11",
+    "node-sass": "^4.11.0",
+    "ol": "^5.3.0",
+    "prop-types": "^15.6.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "react-redux": "^6.0.0",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.3",
+    "react-spatial": "^0.0.10",
+    "react-test-renderer": "^16.7.0",
+    "redux": "^4.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.2.3",
+    "babel-plugin-named-asset-import": "0.3.0",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.8.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "jest-canvas-mock": "^2.0.0-alpha.1",
+    "prettier": "^1.16.3",
+    "react-styleguidist": "^8.0.6",
+    "redux-mock-store": "^1.5.3",
+    "rewire": "^4.0.1",
+    "stylelint": "9.10.1",
+    "stylelint-config-recommended-scss": "3.2.0",
+    "stylelint-config-standard": "18.2.0",
+    "stylelint-scss": "3.5.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "start:local": "REACT_APP_ENV='local' yarn start",
+    "start:dev": "REACT_APP_ENV='dev' yarn start",
+    "start:stag": "REACT_APP_ENV='stag' yarn start",
+    "start:prod": "REACT_APP_ENV='prod' yarn start",
+    "build": "node ./scripts/build-non-split.js && yarn build:es && node scripts/prepare-package.js",
+    "build:dev": "REACT_APP_ENV='dev' yarn build",
+    "build:stag": "REACT_APP_ENV='stag' yarn build",
+    "build:prod": "REACT_APP_ENV='prod' yarn build",
+    "format": "prettier --write 'src/**/*.js' && eslint 'src/**/*.js' --fix && stylelint 'src/**/*.css' 'src/**/*.scss' --fix",
+    "lint": "eslint 'src/**/*.js' && stylelint 'src/**/*.css' 'src/**/*.scss'",
+    "test": "react-scripts test --env=jsdom --transformIgnorePatterns \"/node_modules/(?!(ol|react-spatial)/).*/\"",
+    "test:coverage": "yarn test --coverage --coverageDirectory=coverage",
+    "doc": "styleguidist build",
+    "doc:server": "styleguidist server",
+    "eject": "react-scripts eject",
+    "publish:build": "yarn run build:prod && cd build && yarn publish --access public",
+    "build:es": "bash ./scripts/build-es.sh"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "jest": {
+    "coverageReporters": [
+      "text",
+      "html"
+    ]
+  }
+}
