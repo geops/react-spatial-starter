@@ -27,4 +27,14 @@ Start:
 yarn start
 ```
 
+Build to publish:
+```bash
+yarn build:es
+```
+
+Publish:
+```bash
+yarn publish:build
+```
+
 ## API
