@@ -27,14 +27,52 @@ Start:
 yarn start
 ```
 
-Build to publish:
+Publish as NPM package:
+
+* Build to publish:
 ```bash
 yarn build:es
 ```
 
-Publish:
+* Publish:
 ```bash
 yarn publish:build
 ```
 
-## API
+## Use as ES6 module:
+
+When this app is published as npm package, it can be integrated easily in other applications, as ES6 module:
+
+Install
+```bash
+npm install <this-app-package>
+```
+
+In your App.js file:
+```bash
+import React, { Component } from 'react';
+import thisApp from '<this-app-package>';
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <thisApp
+          props1={props1}
+          props2={props2}
+        />
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+Props can be passed to the App:
+```bash
+<thisApp
+  props1={props1}
+  props2={props2}
+/>
+```
