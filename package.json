@@ -26,22 +26,33 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0"
   },
+  "peerDependencies": {
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
+    "@babel/runtime": "^7.3.1",
     "babel-plugin-named-asset-import": "^0.3.0",
     "cypress": "^3.1.5",
-    "enzyme": "^3.8.0",
-    "enzyme-adapter-react-16": "^1.8.0",
+    "canvas": "^2.3.1",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
     "eslint-config-airbnb": "^17.1.0",
-    "jest-canvas-mock": "^2.0.0-alpha.1",
-    "prettier": "^1.16.3",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "fetch-mock": "^7.2.5",
+    "jest-canvas-mock": "^2.0.0-alpha.2",
+    "node-fetch": "^2.3.0",
+    "prettier": "^1.16.1",
     "react-styleguidist": "^8.0.6",
+    "react-test-renderer": "^16.5.2",
     "redux-mock-store": "^1.5.3",
     "rewire": "^4.0.1",
-    "stylelint": "^9.10.1",
+    "stylelint": "^9.6.0",
     "stylelint-config-recommended-scss": "^3.2.0",
     "stylelint-config-standard": "^18.2.0",
-    "stylelint-scss": "^3.5.1"
+    "stylelint-scss": "^3.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -62,11 +73,8 @@
     "doc": "styleguidist build",
     "doc:server": "styleguidist server",
     "eject": "react-scripts eject",
-    "publish:build": "yarn run build:prod && cd build && yarn publish --access public",
+    "publish:build": "rm -rf build && yarn version && yarn run build:prod && yarn publish build/ --access public --non-interactive --no-git-tag-version",
     "build:es": "bash ./scripts/build-es.sh"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   },
   "browserslist": [
     ">0.2%",

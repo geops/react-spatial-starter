@@ -1,22 +1,36 @@
 #!/bin/bash
+
+###
+# This script build a folder you can use via import es6 module. 
+###
+
+# Remove the old files.
 if rm -rf build/es; then
-    # Compile the 'src' directory and output it to the 'build/es' directory
-    if NODE_ENV=production babel src --config-file './packages/es/.babelrc' --out-dir build/es --source-maps --copy-files; then
-        # Remove test files and their sourcemaps
-        if find build/es -regextype posix-extended -regex '.*(test).*js.?(map|snap)?$' -type f | xargs rm -f; then
-            # Remove snapshots folders
-            if find build/es -name '__snapshots__' -type d | xargs rm -rf; then
-                # Copy to the 'build/es' target
-                cp -r packages/es/* build/es
-            else
-                echo "Remove snapshots folders failed."
-            fi
-        else
-            echo "Remove test files and their sourcemaps failed."
-        fi
-    else
-        echo "Compile the 'src' directory failed."
-    fi
 else
-    echo "Empty build/es folder failed."
+  echo "Empty build/es folder failed."
+  exit 1
+fi
+
+# Transform all es6 files to es5.
+# Transform jsx to js.
+# Transform .scss import to .css import.
+# Creates also js sourcemaps.
+if NODE_ENV=production ./node_modules/.bin/babel src --config-file './packages/es/.babelrc' --out-dir build/es --source-maps --copy-files; then
+else
+  echo "Compile the 'src' directory failed."
+  exit 1
+fi
+
+# Remove all sass files
+if find build/es -regextype posix-extended -regex '.*\.scss$' -type f | xargs rm -f; then
+else
+  echo "Remove sass files failed."
+  exit 1
+fi
+
+# Remove all tests files.
+if find build/es -regextype posix-extended -regex '.*(test).*js.?(map|snap)?$' -type f | xargs rm -f; then
+else
+  echo "Remove tests files failed."
+  exit 1
 fi
