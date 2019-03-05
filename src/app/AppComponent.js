@@ -8,9 +8,7 @@ import Layer from 'react-spatial/Layer';
 import BasicMap from 'react-spatial/components/map/BasicMap';
 import BaseLayer from './layers/BaseLayer';
 
-import {
-  setResolution, setLayers, setCenter, setZoom,
-} from '../model/actions';
+import { setResolution, setLayers, setCenter, setZoom } from '../model/actions';
 
 import './AppComponent.scss';
 
@@ -70,9 +68,7 @@ class AppComponent extends Component {
   }
 
   render() {
-    const {
-      center, zoom, layers, resolution, extent,
-    } = this.props;
+    const { center, zoom, layers, resolution, extent } = this.props;
     let layerContainer = null;
 
     this.map = new OLMap({ controls: [] });

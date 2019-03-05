@@ -1,5 +1,8 @@
 # geOps react-spatial Starter
 
+[![npm](https://img.shields.io/npm/v/%40geops%2Freact-spatial-starter.svg)](https://www.npmjs.com/package/%40geops%2Freact-spatial-starter)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+
 This library provides a starter kit to create a web map application based on [React Spatial](https://github.com/geops/react-spatial).
 
 

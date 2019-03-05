@@ -1,6 +1,4 @@
-import {
-  SET_LAYERS, SET_CENTER, SET_RESOLUTION, SET_ZOOM,
-} from './actions';
+import { SET_LAYERS, SET_CENTER, SET_RESOLUTION, SET_ZOOM } from './actions';
 
 const initialState = {
   layers: [],
