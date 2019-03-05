@@ -2,12 +2,18 @@ const { version } = require('./package.json');
 
 module.exports = {
   title: `geOps react-spatial Starter ${version}`,
-
   sections: [
     {
       name: '',
       content: 'README.md',
     },
+    // {
+    //  name: 'UI components',
+    //  description: 'A collection of react components.',
+    //  components: 'src/components/**/*.js',
+    //  exampleMode: 'expand',
+    //  usageMode: 'expand',
+    // },
   ],
   webpackConfig: {
     module: {

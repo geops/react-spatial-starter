@@ -3,6 +3,10 @@
 # dependencies
 /node_modules
 
+# others
+/styleguide
+/cypress
+
 # testing
 /coverage
 

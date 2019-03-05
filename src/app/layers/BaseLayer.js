@@ -57,8 +57,8 @@ class BaseLayer extends Component {
       olLayer: new TileLayer({
         source: new WMTSSource({
           url:
-            `${CONF.tilesUrl}/wmts/netzkarte_relief_grey_webmercator/`
-            + '{TileMatrixSet}/{TileMatrix}/{TileCol}/{TileRow}.png',
+            `${CONF.tilesUrl}/wmts/netzkarte_relief_grey_webmercator/` +
+            '{TileMatrixSet}/{TileMatrix}/{TileCol}/{TileRow}.png',
           layer: 'netzkarte_relief_grey_webmercator',
           matrixSet: 'webmercator',
           requestEncoding: 'REST',

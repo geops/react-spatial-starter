@@ -10,7 +10,7 @@ exports[`App App should match snapshot. 1`] = `
     <div
       className="tm-map"
       role="menu"
-      tabIndex="-1"
+      tabIndex={0}
     />
   </div>
 </div>
