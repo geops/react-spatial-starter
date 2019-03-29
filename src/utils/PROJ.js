@@ -7,4 +7,4 @@ import EPSG3857 from './EPSG3857';
 register(proj4);
 
 export { EPSG2056, EPSG21781, EPSG3857 };
-export default EPSG2056;
+export default EPSG3857;
