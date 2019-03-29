@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AppComponent AppComponent should match snapshot. 1`] = `
+exports[`Root Root should match snapshot. 1`] = `
 <div
-  className="tm-app-component"
+  className="tm-root"
 >
   <div
     className="tm-map"

@@ -5,7 +5,7 @@ exports[`AppRouter should match snapshot 1`] = `
   className="app"
 >
   <div
-    className="tm-app-component"
+    className="tm-root"
   >
     <div
       className="tm-map"
