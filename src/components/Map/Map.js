@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'lodash/fp';
@@ -6,13 +6,20 @@ import OLMap from 'ol/Map';
 
 import Layer from 'react-spatial/Layer';
 import BasicMap from 'react-spatial/components/map/BasicMap';
-import BaseLayer from './layers/BaseLayer';
+import PROJ from '../../utils/PROJ';
+import BaseLayer from '../BaseLayer';
 
-import { setResolution, setLayers, setCenter, setZoom } from '../model/actions';
-
-import './AppComponent.scss';
+import {
+  setResolution,
+  setLayers,
+  setCenter,
+  setZoom,
+} from '../../model/actions';
 
 const propTypes = {
+  map: PropTypes.instanceOf(OLMap),
+  projection: PropTypes.string,
+
   // mapStateToProps
   center: PropTypes.arrayOf(PropTypes.number),
   extent: PropTypes.arrayOf(PropTypes.number),
@@ -27,6 +34,10 @@ const propTypes = {
 };
 
 const defaultProps = {
+  map: undefined,
+  projection: PROJ.epsgCode,
+
+  // mapStateToProps
   center: [922747.8054581558, 5911639.7675754195],
   layers: [],
   extent: undefined,
@@ -34,12 +45,7 @@ const defaultProps = {
   zoom: 9,
 };
 
-class AppComponent extends Component {
-  constructor(props) {
-    super(props);
-    this.projection = 'EPSG:3857';
-  }
-
+class Map extends PureComponent {
   onMapMoved(evt) {
     const {
       center,
@@ -68,39 +74,42 @@ class AppComponent extends Component {
   }
 
   render() {
-    const { center, zoom, layers, resolution, extent } = this.props;
-    let layerContainer = null;
+    const {
+      map,
+      projection,
+      center,
+      zoom,
+      layers,
+      resolution,
+      extent,
+    } = this.props;
 
-    this.map = new OLMap({ controls: [] });
-    layerContainer = (
-      <>
-        <BaseLayer />
-      </>
-    );
+    let layerContainer = null;
+    layerContainer = <BaseLayer />;
 
     return (
-      <div className="tm-app-component">
+      <>
         <BasicMap
           center={center}
           resolution={resolution}
           extent={extent}
           layers={layers}
           zoom={zoom}
-          map={this.map}
+          map={map}
           onMapMoved={evt => this.onMapMoved(evt)}
           viewOptions={{
-            projection: this.projection,
+            projection,
           }}
         />
 
         {layerContainer}
-      </div>
+      </>
     );
   }
 }
 
-AppComponent.propTypes = propTypes;
-AppComponent.defaultProps = defaultProps;
+Map.propTypes = propTypes;
+Map.defaultProps = defaultProps;
 
 const mapStateToProps = state => ({
   layers: state.layers,
@@ -122,4 +131,4 @@ export default compose(
     mapStateToProps,
     mapDispatchToProps,
   ),
-)(AppComponent);
+)(Map);

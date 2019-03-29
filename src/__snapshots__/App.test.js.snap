@@ -5,8 +5,11 @@ exports[`App App should match snapshot. 1`] = `
   className="app"
 >
   <div
-    className="tm-app-component"
+    className="tm-root"
   >
+    <h1>
+      My react-spatial app centered on 0,0
+    </h1>
     <div
       className="tm-map"
       role="menu"
