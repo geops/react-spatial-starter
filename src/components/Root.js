@@ -10,7 +10,7 @@ import BaseLayer from './layers/BaseLayer';
 
 import { setResolution, setLayers, setCenter, setZoom } from '../model/actions';
 
-import './AppComponent.scss';
+import './Root.scss';
 
 const propTypes = {
   // mapStateToProps
@@ -34,7 +34,7 @@ const defaultProps = {
   zoom: 9,
 };
 
-class AppComponent extends Component {
+class Root extends Component {
   constructor(props) {
     super(props);
     this.projection = 'EPSG:3857';
@@ -79,7 +79,7 @@ class AppComponent extends Component {
     );
 
     return (
-      <div className="tm-app-component">
+      <div className="tm-root">
         <BasicMap
           center={center}
           resolution={resolution}
@@ -99,8 +99,8 @@ class AppComponent extends Component {
   }
 }
 
-AppComponent.propTypes = propTypes;
-AppComponent.defaultProps = defaultProps;
+Root.propTypes = propTypes;
+Root.defaultProps = defaultProps;
 
 const mapStateToProps = state => ({
   layers: state.layers,
@@ -122,4 +122,4 @@ export default compose(
     mapStateToProps,
     mapDispatchToProps,
   ),
-)(AppComponent);
+)(Root);
