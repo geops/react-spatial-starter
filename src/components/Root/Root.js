@@ -6,9 +6,14 @@ import OLMap from 'ol/Map';
 
 import Layer from 'react-spatial/Layer';
 import BasicMap from 'react-spatial/components/map/BasicMap';
-import BaseLayer from './layers/BaseLayer';
+import BaseLayer from '../BaseLayer';
 
-import { setResolution, setLayers, setCenter, setZoom } from '../model/actions';
+import {
+  setResolution,
+  setLayers,
+  setCenter,
+  setZoom,
+} from '../../model/actions';
 
 import './Root.scss';
 
