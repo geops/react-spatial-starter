@@ -4,13 +4,15 @@ exports[`Root Root should match snapshot. 1`] = `
 <div
   className="tm-root"
 >
-  <h1>
-    My react-spatial app centered on 922747.8054581558,5911639.7675754195
-  </h1>
   <div
     className="tm-map"
     role="menu"
     tabIndex={0}
   />
+  <div>
+    <h1>
+      My react-spatial app centered on 922747.8054581558,5911639.7675754195
+    </h1>
+  </div>
 </div>
 `;

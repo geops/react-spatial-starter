@@ -38,8 +38,10 @@ class Root extends PureComponent {
 
     return (
       <div className="tm-root">
-        <h1>{`${title} centered on ${center && center.toString()}`}</h1>
         <Map map={this.map} />
+        <div>
+          <h1>{`${title} centered on ${center && center.toString()}`}</h1>
+        </div>
       </div>
     );
   }

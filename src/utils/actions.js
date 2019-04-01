@@ -1,8 +1,8 @@
 /**
  * This function createds a FormData object to send to the server.
  *
- * @param {object} schema A JSON schema representing a form from a django rest OPTIONS requests.
- * @param {object} data The KVP parameters to send.
+ * @param {Object} schema A JSON schema representing a form from a django rest OPTIONS requests.
+ * @param {Object} data The KVP parameters to send.
  *
  * @return {FormData} The FormData object.
  */
@@ -29,7 +29,7 @@ const createFormData = (data, schema) => {
  * @param {string} url Url of the request.
  * @param {string} method method tof the request GET,POST,PUT...
  * @param {string} type Action's name to dispatch
- * @param {*} body Body of the request to send, a plain js object or a FormData.
+ * @param {Object} body Body of the request to send, a plain js object or a FormData.
  */
 const fetchData = (url, method, type, body) => dispatch => {
   const fetchParams = {
