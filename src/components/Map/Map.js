@@ -5,6 +5,7 @@ import { compose } from 'lodash/fp';
 import OLMap from 'ol/Map';
 
 import Layer from 'react-spatial/Layer';
+import Permalink from 'react-spatial/components/Permalink';
 import BasicMap from 'react-spatial/components/map/BasicMap';
 import PROJ from '../../utils/PROJ';
 import BaseLayer from '../BaseLayer';
@@ -46,6 +47,19 @@ const defaultProps = {
 };
 
 class Map extends PureComponent {
+  constructor(props) {
+    super(props);
+    const { center, zoom } = this.props;
+
+    this.state = {
+      params: {
+        zoom,
+        x: center[0],
+        y: center[1],
+      },
+    };
+  }
+
   onMapMoved(evt) {
     const {
       center,
@@ -71,9 +85,18 @@ class Map extends PureComponent {
     if (center[0] !== newCenter[0] || center[1] !== newCenter[1]) {
       dispatchSetCenter(newCenter);
     }
+
+    this.setState({
+      params: {
+        zoom,
+        x: center[0],
+        y: center[1],
+      },
+    });
   }
 
   render() {
+    const { params } = this.state;
     const {
       map,
       projection,
@@ -101,6 +124,8 @@ class Map extends PureComponent {
             projection,
           }}
         />
+
+        <Permalink params={params} />
 
         {layerContainer}
       </>
