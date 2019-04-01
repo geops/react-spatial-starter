@@ -23,7 +23,7 @@ const defaultProps = {
   title: 'My react-spatial app',
 
   // mapStateToProps
-  center: [0, 0],
+  center: [922747.8054581558, 5911639.7675754195],
 };
 
 class Root extends PureComponent {
@@ -38,8 +38,10 @@ class Root extends PureComponent {
 
     return (
       <div className="tm-root">
-        <h1>{`${title} centered on ${center && center.toString()}`}</h1>
         <Map map={this.map} />
+        <div>
+          <h1>{`${title} centered on ${center && center.toString()}`}</h1>
+        </div>
       </div>
     );
   }
