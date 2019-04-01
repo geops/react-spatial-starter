@@ -38,7 +38,7 @@ const defaultProps = {
   projection: PROJ.epsgCode,
 
   // mapStateToProps
-  center: [922747.8054581558, 5911639.7675754195],
+  center: [0, 0],
   layers: [],
   extent: undefined,
   resolution: undefined,

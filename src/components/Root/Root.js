@@ -23,7 +23,7 @@ const defaultProps = {
   title: 'My react-spatial app',
 
   // mapStateToProps
-  center: [0, 0],
+  center: [922747.8054581558, 5911639.7675754195],
 };
 
 class Root extends PureComponent {
