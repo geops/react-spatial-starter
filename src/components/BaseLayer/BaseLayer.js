@@ -54,6 +54,7 @@ class BaseLayer extends Component {
 
     this.layer = new Layer({
       name,
+      isBaseLayer: true,
       olLayer: new TileLayer({
         source: new WMTSSource({
           url:

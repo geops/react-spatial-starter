@@ -5,7 +5,7 @@ import { compose } from 'lodash/fp';
 import OLMap from 'ol/Map';
 
 import Layer from 'react-spatial/Layer';
-import BasicMap from 'react-spatial/components/map/BasicMap';
+import BasicMap from 'react-spatial/components/BasicMap';
 import PROJ from '../../utils/PROJ';
 import BaseLayer from '../BaseLayer';
 
@@ -34,7 +34,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  map: undefined,
+  map: null,
   projection: PROJ.epsgCode,
 
   // mapStateToProps

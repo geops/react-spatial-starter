@@ -5,7 +5,13 @@ import App from './App';
 const AppRouter = () => (
   <Router>
     <>
-      <Route exact path="/" component={() => <App />} />
+      <Route
+        exact
+        path="/"
+        component={({ history, match }) => (
+          <App history={history} initialState={match.params} />
+        )}
+      />
     </>
   </Router>
 );

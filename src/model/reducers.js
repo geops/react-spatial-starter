@@ -2,6 +2,8 @@ import { SET_LAYERS, SET_CENTER, SET_RESOLUTION, SET_ZOOM } from './actions';
 
 const initialState = {
   layers: [],
+  zoom: 9,
+  center: [922747.8054581558, 5911639.7675754195],
 };
 
 export default function schulzugApp(state = initialState, action) {
