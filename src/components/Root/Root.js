@@ -41,7 +41,13 @@ const defaultProps = {
 
 class Root extends PureComponent {
   constructor(props) {
-    super(props);
+    super(props)
+    this.state = {
+      params: {},
+    };
+  }
+
+  componentDidMount() {
     const {
       center,
       zoom,
@@ -51,14 +57,14 @@ class Root extends PureComponent {
     } = this.props;
 
     // Permalink has the priority over the initial state.
-    const params = {
+    const parameters = {
       ...initialState,
       ...qs.parse(window.location.search),
     };
 
-    const z = parseInt(params.zoom, 10);
-    const x = parseFloat(params.x);
-    const y = parseFloat(params.y);
+    const z = parseInt(parameters.zoom, 10);
+    const x = parseFloat(parameters.x);
+    const y = parseFloat(parameters.y);
 
     if (x && y) {
       dispatchSetCenter([x, y]);
@@ -68,7 +74,7 @@ class Root extends PureComponent {
       dispatchSetZoom(z);
     }
 
-    this.params = {
+    const params = {
       zoom: z || zoom,
       x: x || center[0],
       y: y || center[1],
@@ -76,8 +82,10 @@ class Root extends PureComponent {
 
     const layerNames = this.getLayers();
     if (layerNames) {
-      this.params.layers = layerNames;
+      params.layers = layerNames;
     }
+
+    this.setState({ params });
   }
 
   getLayers() {
@@ -88,19 +96,30 @@ class Root extends PureComponent {
       .join(',');
   }
 
-  render() {
-    const { title, center, zoom, layers, history } = this.props;
-    this.params = {
-      zoom,
-      x: center[0],
-      y: center[1],
-    };
+  componentDidUpdate(prevProps) {
+    const { center, zoom, layers } = this.props;
 
-    const layerNames = this.getLayers(layers);
-    if (layerNames) {
-      this.params.layers = layerNames;
+    if (prevProps.zoom !== zoom ||
+      prevProps.center !== center ||
+      prevProps.layers !== layers) {
+      const params = {
+        zoom,
+        x: center[0],
+        y: center[1],
+      };
+      const layerNames = this.getLayers(layers);
+      if (layerNames) {
+        params.layers = layerNames;
+      }
+
+      this.setState({ params });
     }
+  }
 
+  render() {
+    const { title, center, zoom, history } = this.props;
+
+    const { params } = this.state;
     this.map = new OLMap({ controls: [] });
 
     return (
@@ -109,7 +128,7 @@ class Root extends PureComponent {
         <div>
           <h1>{`${title} centered on ${center && center.toString()}`}</h1>
         </div>
-        <Permalink params={this.params} history={history} />
+        <Permalink params={params} history={history} />
       </div>
     );
   }
