@@ -1,4 +1,10 @@
-import { SET_LAYERS, SET_CENTER, SET_RESOLUTION, SET_ZOOM } from './actions';
+import {
+  SET_LAYERS,
+  SET_CENTER,
+  SET_RESOLUTION,
+  SET_ZOOM,
+  ADD_LAYERS,
+} from './actions';
 
 const initialState = {
   layers: [],
@@ -12,6 +18,16 @@ export default function schulzugApp(state = initialState, action) {
       return {
         ...state,
         layers: [...action.data],
+      };
+    case ADD_LAYERS:
+      return {
+        ...state,
+        layers: [
+          ...state.layers.filter(l =>
+            action.data.find(layer => l.getName() !== layer.getName()),
+          ),
+          ...action.data,
+        ],
       };
     case SET_CENTER:
       return {
