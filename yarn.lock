@@ -10664,10 +10664,10 @@ react-simple-code-editor@^0.9.7:
   resolved "https://registry.yarnpkg.com/react-simple-code-editor/-/react-simple-code-editor-0.9.10.tgz#1ab5ea7215687ed918c6d0dae90736cf01890905"
   integrity sha512-80LJwRQS7Wi9Ugh/e6FRHWdcg4oQOpMBDFxyDpORILffrHdV3EIQ1IeX5x7488r05iFgLbVDV4nQ1LRKjgCm0g==
 
-react-spatial@^0.0.14-beta.5:
-  version "0.0.14-beta.5"
-  resolved "https://registry.yarnpkg.com/react-spatial/-/react-spatial-0.0.14-beta.5.tgz#51cc182db99f8552e7e04af48c25e9e331c85a9b"
-  integrity sha512-lrmDIubcO3QH+NRsCC6G3lMRNR9x0Sdz0L3uJMgAaScsUwievORcBFV7FijYu5wOd0oHP2OcrHg/IruxvfwBPg==
+react-spatial@^0.0.14-beta.6:
+  version "0.0.14-beta.6"
+  resolved "https://registry.yarnpkg.com/react-spatial/-/react-spatial-0.0.14-beta.6.tgz#1513517d2a44e081ad0ebfbe5209d56f0d4c483b"
+  integrity sha512-g8A8nPA/j28CTkXljKucjlxOQZgJLNznUHM9xunmQ2i8xjUPkiEv1cYbxOz8wqF+MVByM/qeFdHYzlx+jJUwBg==
   dependencies:
     core-js "^3.0.0"
     jest-environment-jsdom-fourteen "^0.1.0"
@@ -10679,9 +10679,9 @@ react-spatial@^0.0.14-beta.5:
     resize-observer-polyfill "^1.5.1"
 
 react-styleguidist@^9.0.2:
-  version "9.0.5"
-  resolved "https://registry.yarnpkg.com/react-styleguidist/-/react-styleguidist-9.0.5.tgz#83f32af4bfd4d6aab842b1cda1c776225a463dab"
-  integrity sha512-cTj1kseFhamSoEWArqukkrVPQFaopeEW7sjLOp2PmQwUFsFCQpsffzUklF0zGqlazC7KOhLQWrsrdtc2hiVaGA==
+  version "9.0.6"
+  resolved "https://registry.yarnpkg.com/react-styleguidist/-/react-styleguidist-9.0.6.tgz#b5f14e6ca6626f2730a584fc321f91f97d4a897d"
+  integrity sha512-3NoKihEl0qkX+5N8StGnuImMftXyNKZh0XIhUqqF9lWVluv8cIkDQ9AHK9h0LfcWp3uiA/+FgeKESQ3Snuas8A==
   dependencies:
     "@vxna/mini-html-webpack-template" "^0.1.7"
     acorn "^6.1.1"
