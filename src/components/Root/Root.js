@@ -5,7 +5,6 @@ import { compose } from 'lodash/fp';
 import qs from 'query-string';
 import OLMap from 'ol/Map';
 import Permalink from 'react-spatial/components/Permalink';
-import Layer from 'react-spatial/Layer';
 import Map from '../Map';
 
 import { setCenter, setZoom } from '../../model/actions';
@@ -21,7 +20,6 @@ const propTypes = {
   }),
 
   // mapStateToProps
-  layers: PropTypes.arrayOf(PropTypes.instanceOf(Layer)),
   center: PropTypes.arrayOf(PropTypes.number),
   zoom: PropTypes.number,
 
@@ -34,7 +32,6 @@ const defaultProps = {
   title: 'My react-spatial app',
   history: null,
   initialState: {},
-  layers: [],
   center: [0, 0],
   zoom: 9,
 };
@@ -49,13 +46,7 @@ class Root extends PureComponent {
   }
 
   componentDidMount() {
-    const {
-      center,
-      zoom,
-      initialState,
-      dispatchSetZoom,
-      dispatchSetCenter,
-    } = this.props;
+    const { initialState, dispatchSetZoom, dispatchSetCenter } = this.props;
 
     // Permalink has the priority over the initial state.
     const parameters = {
@@ -63,7 +54,7 @@ class Root extends PureComponent {
       ...qs.parse(window.location.search),
     };
 
-    const z = parseInt(parameters.zoom, 10);
+    const z = parseInt(parameters.z, 10);
     const x = parseFloat(parameters.x);
     const y = parseFloat(parameters.y);
 
@@ -74,50 +65,6 @@ class Root extends PureComponent {
     if (z) {
       dispatchSetZoom(z);
     }
-
-    const params = {
-      zoom: z || zoom,
-      x: x || center[0],
-      y: y || center[1],
-    };
-
-    const layerNames = this.getLayers();
-    if (layerNames) {
-      params.layers = layerNames;
-    }
-
-    this.setState({ params });
-  }
-
-  componentDidUpdate(prevProps) {
-    const { center, zoom, layers } = this.props;
-
-    if (
-      prevProps.zoom !== zoom ||
-      prevProps.center !== center ||
-      prevProps.layers !== layers
-    ) {
-      const params = {
-        zoom,
-        x: center[0],
-        y: center[1],
-      };
-      const layerNames = this.getLayers(layers);
-      if (layerNames) {
-        params.layers = layerNames;
-      }
-
-      // eslint-disable-next-line react/no-did-update-set-state
-      this.setState({ params });
-    }
-  }
-
-  getLayers() {
-    const { layers } = this.props;
-    return layers
-      .filter(l => l.isBaseLayer === true)
-      .map(l => l.id)
-      .join(',');
   }
 
   render() {
@@ -130,7 +77,7 @@ class Root extends PureComponent {
         <div>
           <h1>{`${title} centered on ${center && center.toString()}`}</h1>
         </div>
-        <Permalink params={params} history={history} />
+        <Permalink map={this.map} params={params} history={history} />
       </div>
     );
   }
