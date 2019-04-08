@@ -41,10 +41,11 @@ const defaultProps = {
 
 class Root extends PureComponent {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       params: {},
     };
+    this.map = new OLMap({ controls: [] });
   }
 
   componentDidMount() {
@@ -88,20 +89,14 @@ class Root extends PureComponent {
     this.setState({ params });
   }
 
-  getLayers() {
-    const { layers } = this.props;
-    return layers
-      .filter(l => l.isBaseLayer === true)
-      .map(l => l.id)
-      .join(',');
-  }
-
   componentDidUpdate(prevProps) {
     const { center, zoom, layers } = this.props;
 
-    if (prevProps.zoom !== zoom ||
+    if (
+      prevProps.zoom !== zoom ||
       prevProps.center !== center ||
-      prevProps.layers !== layers) {
+      prevProps.layers !== layers
+    ) {
       const params = {
         zoom,
         x: center[0],
@@ -112,15 +107,22 @@ class Root extends PureComponent {
         params.layers = layerNames;
       }
 
+      // eslint-disable-next-line react/no-did-update-set-state
       this.setState({ params });
     }
   }
 
+  getLayers() {
+    const { layers } = this.props;
+    return layers
+      .filter(l => l.isBaseLayer === true)
+      .map(l => l.id)
+      .join(',');
+  }
+
   render() {
     const { title, center, zoom, history } = this.props;
-
     const { params } = this.state;
-    this.map = new OLMap({ controls: [] });
 
     return (
       <div className="tm-root">
