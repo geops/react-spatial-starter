@@ -12,7 +12,7 @@ const initialState = {
   center: [922747.8054581558, 5911639.7675754195],
 };
 
-export default function schulzugApp(state = initialState, action) {
+export default function app(state = initialState, action) {
   switch (action.type) {
     case SET_LAYERS:
       return {
