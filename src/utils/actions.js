@@ -41,10 +41,14 @@ const fetchData = (url, method, type, body) => dispatch => {
       if (!res.ok) {
         throw res;
       }
+      const clone = res.clone();
 
-      // If the server respond a good http response but without json content, we return an empty object
+      // If the server respond a good http response but without json or text content,
+      // we return an empty object.
       return res.json().catch(() => {
-        return Promise.resolve({});
+        return clone.text().catch(() => {
+          return Promise.resolve({});
+        });
       });
     })
     .then(data => {
