@@ -30,11 +30,13 @@ const createFormData = (data, schema) => {
  * @param {string} method method tof the request GET,POST,PUT...
  * @param {string} type Action's name to dispatch
  * @param {Object} body Body of the request to send, a plain js object or a FormData.
+ * @param {Object} headers Headers of the request to send.
  */
-const fetchData = (url, method, type, body) => dispatch => {
+const fetchData = (url, method, type, body, headers) => dispatch => {
   const fetchParams = {
     method,
     body,
+    headers,
   };
   return fetch(url, fetchParams)
     .then(res => {
