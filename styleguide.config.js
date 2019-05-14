@@ -2,7 +2,7 @@ const { version } = require('./package.json');
 
 module.exports = {
   title: `geOps react-spatial Starter ${version}`,
-  require: ['react-app-polyfill/ie11', 'core-js'],
+  require: ['react-app-polyfill/ie11', 'react-app-polyfill/stable'],
   sections: [
     {
       name: '',

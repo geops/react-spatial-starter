@@ -13,16 +13,13 @@ configure({
 
 const mockStore = configureStore();
 const initialState = {
-  dispatchSetCenter: () => {},
-  dispatchSetZoom: () => {},
-  dispatchSetResolution: () => {},
-  dispatchSetLayers: () => {},
-
-  center: [922747.8054581558, 5911639.7675754195],
-  layers: [],
-  extent: undefined,
-  resolution: undefined,
-  zoom: 9,
+  map: {
+    center: [922747.8054581558, 5911639.7675754195],
+    layers: [],
+    extent: undefined,
+    resolution: undefined,
+    zoom: 9,
+  },
 };
 
 describe('Root', () => {

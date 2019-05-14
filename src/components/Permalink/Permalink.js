@@ -6,7 +6,7 @@ import qs from 'query-string';
 import OLMap from 'ol/Map';
 import RSPermalink from 'react-spatial/components/Permalink';
 
-import { setCenter, setZoom } from '../../model/actions';
+import { setCenter, setZoom } from '../../model/map/actions';
 
 const propTypes = {
   map: PropTypes.instanceOf(OLMap),
