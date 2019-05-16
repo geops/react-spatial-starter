@@ -8,7 +8,7 @@ import WMTSSource from 'ol/source/WMTS';
 import WMTSTilegrid from '../../utils/WMTSTileGrid3857';
 
 import CONF from '../../config';
-import { addLayers } from '../../model/actions';
+import { addLayers } from '../../model/map/actions';
 
 const propTypes = {
   // mapDispatchToProps

@@ -14,7 +14,7 @@ import {
   setLayers,
   setCenter,
   setZoom,
-} from '../../model/actions';
+} from '../../model/map/actions';
 
 const propTypes = {
   map: PropTypes.instanceOf(OLMap),
@@ -112,11 +112,11 @@ Map.propTypes = propTypes;
 Map.defaultProps = defaultProps;
 
 const mapStateToProps = state => ({
-  layers: state.layers,
-  center: state.center,
-  extent: state.extent,
-  resolution: state.resolution,
-  zoom: state.zoom,
+  layers: state.map.layers,
+  center: state.map.center,
+  extent: state.map.extent,
+  resolution: state.map.resolution,
+  zoom: state.map.zoom,
 });
 
 const mapDispatchToProps = {
