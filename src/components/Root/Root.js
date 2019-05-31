@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'lodash/fp';
 import OLMap from 'ol/Map';
+import Zoom from 'react-spatial/components/Zoom';
 import Permalink from '../Permalink';
 import Map from '../Map';
 
+import 'react-spatial/themes/default/index.scss';
 import './Root.scss';
 
 const propTypes = {
@@ -38,6 +40,7 @@ class Root extends PureComponent {
           history={history}
           initialState={initialState}
         />
+        <Zoom map={this.map} />
       </div>
     );
   }
