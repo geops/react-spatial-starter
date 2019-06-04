@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'lodash/fp';
 import OLMap from 'ol/Map';
+import { defaults as defaultInteractions } from 'ol/interaction';
 import Zoom from 'react-spatial/components/Zoom';
 import Permalink from '../Permalink';
 import Map from '../Map';
@@ -26,7 +27,13 @@ const defaultProps = {
 class Root extends PureComponent {
   constructor(props) {
     super(props);
-    this.map = new OLMap({ controls: [] });
+    this.map = new OLMap({
+      controls: [],
+      interactions: defaultInteractions({
+        altShiftDragRotate: false,
+        pinchRotate: false,
+      }),
+    });
   }
 
   render() {
