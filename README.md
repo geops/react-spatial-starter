@@ -51,6 +51,8 @@ Install
 npm install <this-app-package>
 ```
 
+Dependency currently required: 'node-sass'
+
 In your App.js file:
 ```bash
 import React, { Component } from 'react';
