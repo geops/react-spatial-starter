@@ -4,9 +4,14 @@ import { connect } from 'react-redux';
 import { compose } from 'lodash/fp';
 import OLMap from 'ol/Map';
 import { defaults as defaultInteractions } from 'ol/interaction';
+import LayerService from 'react-spatial/LayerService';
+import ConfigReader from 'react-spatial/ConfigReader';
 import Zoom from 'react-spatial/components/Zoom';
+import STARTER_CONF from '../../starterConfig';
 import Permalink from '../Permalink';
 import Map from '../Map';
+
+import { setLayers, setLayerService } from '../../model/map/actions';
 
 import 'react-spatial/themes/default/index.scss';
 import './Root.scss';
@@ -17,6 +22,10 @@ const propTypes = {
     push: PropTypes.func,
     replace: PropTypes.func,
   }),
+
+  // mapDispatchToProps
+  dispatchSetLayers: PropTypes.func.isRequired,
+  dispatchSetLayerService: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
@@ -34,6 +43,20 @@ class Root extends PureComponent {
         pinchRotate: false,
       }),
     });
+  }
+
+  componentDidMount() {
+    this.loadLayers();
+  }
+
+  loadLayers() {
+    const { dispatchSetLayers, dispatchSetLayerService } = this.props;
+
+    const layers = ConfigReader.readConfig(this.map, STARTER_CONF.layers);
+
+    this.layerService = new LayerService(layers);
+    dispatchSetLayers([...this.layerService.getLayers()]);
+    dispatchSetLayerService(this.layerService);
   }
 
   render() {
@@ -59,7 +82,10 @@ Root.defaultProps = defaultProps;
 // eslint-disable-next-line no-unused-vars
 const mapStateToProps = state => ({});
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  dispatchSetLayers: setLayers,
+  dispatchSetLayerService: setLayerService,
+};
 
 export default compose(
   connect(
