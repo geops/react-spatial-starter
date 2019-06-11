@@ -1,7 +1,7 @@
 import WMTSTilegrid from 'ol/tilegrid/WMTS';
 import PROJ from './EPSG3857';
 
-export const wmtsResolutions = [
+export const resolutions = [
   156543.033928,
   78271.516964,
   39135.758482,
@@ -24,10 +24,12 @@ export const wmtsResolutions = [
   0.298582141739,
 ];
 
-export const wmtsMatrixIds = wmtsResolutions.map((res, i) => `${i}`);
+export const matrixIds = resolutions.map((res, i) => `${i}`);
+
+export const { extent } = PROJ;
 
 export default new WMTSTilegrid({
-  extent: PROJ.extent,
-  resolutions: wmtsResolutions,
-  matrixIds: wmtsMatrixIds,
+  extent,
+  resolutions,
+  matrixIds,
 });

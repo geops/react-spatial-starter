@@ -1,5 +1,4 @@
-import PROJ from './utils/EPSG3857';
-import { wmtsResolutions } from './utils/WMTSTileGrid3857';
+import { resolutions, extent } from './utils/WMTSTileGrid3857';
 import CONF from './config';
 
 export default {
@@ -15,8 +14,8 @@ export default {
           'webmercator/{TileMatrix}/{TileCol}/{TileRow}.png',
         matrixSet: 'webmercator',
         requestEncoding: 'REST',
-        projectionExtent: PROJ.extent,
-        resolutions: wmtsResolutions,
+        projectionExtent: extent,
+        resolutions,
       },
     },
   ],
