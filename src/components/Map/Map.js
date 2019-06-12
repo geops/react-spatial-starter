@@ -7,14 +7,8 @@ import OLMap from 'ol/Map';
 import Layer from 'react-spatial/Layer';
 import BasicMap from 'react-spatial/components/BasicMap';
 import PROJ from '../../utils/PROJ';
-import BaseLayer from '../BaseLayer';
 
-import {
-  setResolution,
-  setLayers,
-  setCenter,
-  setZoom,
-} from '../../model/map/actions';
+import { setResolution, setCenter, setZoom } from '../../model/map/actions';
 
 const propTypes = {
   map: PropTypes.instanceOf(OLMap),
@@ -84,9 +78,6 @@ class Map extends PureComponent {
       extent,
     } = this.props;
 
-    let layerContainer = null;
-    layerContainer = <BaseLayer />;
-
     return (
       <>
         <BasicMap
@@ -101,8 +92,6 @@ class Map extends PureComponent {
             projection,
           }}
         />
-
-        {layerContainer}
       </>
     );
   }
@@ -121,7 +110,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   dispatchSetResolution: setResolution,
-  dispatchSetLayers: setLayers,
   dispatchSetCenter: setCenter,
   dispatchSetZoom: setZoom,
 };

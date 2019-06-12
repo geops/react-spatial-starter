@@ -1,7 +1,7 @@
 import WMTSTilegrid from 'ol/tilegrid/WMTS';
 import PROJ from './EPSG2056';
 
-export const tileGridOrigin = [2420000, 1350000];
+export const origin = [2420000, 1350000];
 
 export const tileGridResolutions = [
   4000,
@@ -34,13 +34,13 @@ export const tileGridResolutions = [
   0.25,
 ];
 
-export const tileGridMatrixIds = tileGridResolutions.map((res, i) => `${i}`);
+export const matrixIds = tileGridResolutions.map((res, i) => `${i}`);
 
-export const tileGridExtent = PROJ.extent;
+export const { extent } = PROJ;
 
 export default new WMTSTilegrid({
-  origin: tileGridOrigin,
-  extent: tileGridExtent,
+  origin,
+  extent,
   resolutions: tileGridResolutions,
-  matrixIds: tileGridMatrixIds,
+  matrixIds,
 });

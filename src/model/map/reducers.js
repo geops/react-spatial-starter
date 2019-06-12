@@ -1,9 +1,9 @@
 import {
   SET_LAYERS,
+  SET_LAYER_SERVICE,
   SET_CENTER,
   SET_RESOLUTION,
   SET_ZOOM,
-  ADD_LAYERS,
 } from './actions';
 
 const initialState = {
@@ -19,15 +19,10 @@ export default function app(state = initialState, action) {
         ...state,
         layers: [...action.data],
       };
-    case ADD_LAYERS:
+    case SET_LAYER_SERVICE:
       return {
         ...state,
-        layers: [
-          ...state.layers.filter(l =>
-            action.data.find(layer => l.getName() !== layer.getName()),
-          ),
-          ...action.data,
-        ],
+        layerService: action.data,
       };
     case SET_CENTER:
       return {
