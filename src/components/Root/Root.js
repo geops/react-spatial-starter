@@ -7,7 +7,7 @@ import { defaults as defaultInteractions } from 'ol/interaction';
 import LayerService from 'react-spatial/LayerService';
 import ConfigReader from 'react-spatial/ConfigReader';
 import Zoom from 'react-spatial/components/Zoom';
-import STARTER_CONF from '../../starterConfig';
+import APP_CONF from '../../appConfig';
 import Permalink from '../Permalink';
 import Map from '../Map';
 
@@ -52,7 +52,7 @@ class Root extends PureComponent {
   loadLayers() {
     const { dispatchSetLayers, dispatchSetLayerService } = this.props;
 
-    const layers = ConfigReader.readConfig(this.map, STARTER_CONF.layers);
+    const layers = ConfigReader.readConfig(this.map, APP_CONF.layers);
 
     this.layerService = new LayerService(layers);
     dispatchSetLayers([...this.layerService.getLayers()]);
@@ -64,7 +64,7 @@ class Root extends PureComponent {
 
     return (
       <div className="tm-root">
-        <Map map={this.map} />
+        <Map map={this.map} projection={APP_CONF.projection} />
         <Permalink
           map={this.map}
           history={history}

@@ -6,7 +6,6 @@ import OLMap from 'ol/Map';
 
 import Layer from 'react-spatial/Layer';
 import BasicMap from 'react-spatial/components/BasicMap';
-import PROJ from '../../utils/PROJ';
 
 import { setResolution, setCenter, setZoom } from '../../model/map/actions';
 
@@ -29,7 +28,7 @@ const propTypes = {
 
 const defaultProps = {
   map: null,
-  projection: PROJ.epsgCode,
+  projection: 'EPSG:3857',
 
   // mapStateToProps
   center: [0, 0],
