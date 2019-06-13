@@ -2,32 +2,40 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { compose } from 'lodash/fp';
-import OLMap from 'ol/Map';
 
 import Layer from 'react-spatial/Layer';
+import OLMap from 'ol/Map';
+import LayerService from 'react-spatial/LayerService';
+import ConfigReader from 'react-spatial/ConfigReader';
 import BasicMap from 'react-spatial/components/BasicMap';
 
-import { setResolution, setCenter, setZoom } from '../../model/map/actions';
+import APP_CONF from '../../appConfig';
+import {
+  setResolution,
+  setCenter,
+  setLayers,
+  setZoom,
+} from '../../model/map/actions';
 
 const propTypes = {
-  map: PropTypes.instanceOf(OLMap),
   projection: PropTypes.string,
 
   // mapStateToProps
   center: PropTypes.arrayOf(PropTypes.number),
   extent: PropTypes.arrayOf(PropTypes.number),
   layers: PropTypes.arrayOf(PropTypes.instanceOf(Layer)),
+  map: PropTypes.instanceOf(OLMap).isRequired,
   resolution: PropTypes.number,
   zoom: PropTypes.number,
 
   // mapDispatchToProps
   dispatchSetCenter: PropTypes.func.isRequired,
+  dispatchSetLayers: PropTypes.func.isRequired,
   dispatchSetZoom: PropTypes.func.isRequired,
   dispatchSetResolution: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
-  map: null,
   projection: 'EPSG:3857',
 
   // mapStateToProps
@@ -39,6 +47,14 @@ const defaultProps = {
 };
 
 class Map extends PureComponent {
+  componentDidMount() {
+    const { dispatchSetLayers, map } = this.props;
+    const layers = ConfigReader.readConfig(map, APP_CONF.layers);
+
+    this.layerService = new LayerService(layers);
+    dispatchSetLayers([...this.layerService.getLayers()]);
+  }
+
   onMapMoved(evt) {
     const {
       center,
@@ -68,11 +84,11 @@ class Map extends PureComponent {
 
   render() {
     const {
-      map,
       projection,
       center,
       zoom,
       layers,
+      map,
       resolution,
       extent,
     } = this.props;
@@ -109,6 +125,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   dispatchSetResolution: setResolution,
+  dispatchSetLayers: setLayers,
   dispatchSetCenter: setCenter,
   dispatchSetZoom: setZoom,
 };

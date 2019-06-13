@@ -6,8 +6,6 @@ export const SET_ZOOM = 'SET_ZOOM';
 
 export const setLayers = data => ({ type: SET_LAYERS, data });
 
-export const setLayerService = data => ({ type: SET_LAYER_SERVICE, data });
-
 export const setCenter = data => ({ type: SET_CENTER, data });
 
 export const setResolution = data => ({ type: SET_RESOLUTION, data });

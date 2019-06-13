@@ -9,6 +9,12 @@ body {
   width: 100%;
   position: absolute;
   overflow: hidden;
+
+  .tm-zooms-bar {
+    position: absolute;
+    right: 15px;
+    bottom: 15px;
+  }
 }
 
 .tm-map {

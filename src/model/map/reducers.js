@@ -1,10 +1,4 @@
-import {
-  SET_LAYERS,
-  SET_LAYER_SERVICE,
-  SET_CENTER,
-  SET_RESOLUTION,
-  SET_ZOOM,
-} from './actions';
+import { SET_LAYERS, SET_CENTER, SET_RESOLUTION, SET_ZOOM } from './actions';
 
 const initialState = {
   layers: [],
@@ -18,11 +12,6 @@ export default function app(state = initialState, action) {
       return {
         ...state,
         layers: [...action.data],
-      };
-    case SET_LAYER_SERVICE:
-      return {
-        ...state,
-        layerService: action.data,
       };
     case SET_CENTER:
       return {
