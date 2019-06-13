@@ -5,17 +5,9 @@ import { compose } from 'lodash/fp';
 
 import Layer from 'react-spatial/Layer';
 import OLMap from 'ol/Map';
-import LayerService from 'react-spatial/LayerService';
-import ConfigReader from 'react-spatial/ConfigReader';
 import BasicMap from 'react-spatial/components/BasicMap';
 
-import APP_CONF from '../../appConfig';
-import {
-  setResolution,
-  setCenter,
-  setLayers,
-  setZoom,
-} from '../../model/map/actions';
+import { setResolution, setCenter, setZoom } from '../../model/map/actions';
 
 const propTypes = {
   projection: PropTypes.string,
@@ -30,7 +22,6 @@ const propTypes = {
 
   // mapDispatchToProps
   dispatchSetCenter: PropTypes.func.isRequired,
-  dispatchSetLayers: PropTypes.func.isRequired,
   dispatchSetZoom: PropTypes.func.isRequired,
   dispatchSetResolution: PropTypes.func.isRequired,
 };
@@ -47,14 +38,6 @@ const defaultProps = {
 };
 
 class Map extends PureComponent {
-  componentDidMount() {
-    const { dispatchSetLayers, map } = this.props;
-    const layers = ConfigReader.readConfig(map, APP_CONF.layers);
-
-    this.layerService = new LayerService(layers);
-    dispatchSetLayers([...this.layerService.getLayers()]);
-  }
-
   onMapMoved(evt) {
     const {
       center,
@@ -125,7 +108,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   dispatchSetResolution: setResolution,
-  dispatchSetLayers: setLayers,
   dispatchSetCenter: setCenter,
   dispatchSetZoom: setZoom,
 };
