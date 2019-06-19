@@ -5,8 +5,8 @@
 
 This library provides a starter kit to create a web map application based on [React Spatial](https://github.com/geops/react-spatial).
 
-
 ## Technologies
+
 * react
 * redux
 * react-router
@@ -15,44 +15,51 @@ This library provides a starter kit to create a web map application based on [Re
 * cypress
 * react-spatial
 * eslint with airbnb
+* styleint
 * prettier
 * sass
 
 ## Getting Started
 
-Install:
+* Install:
+
 ```bash
 yarn install
 ```
 
-Start:
+* Start:
+
 ```bash
 yarn start
 ```
 
 Publish as NPM package:
 
-* Build to publish:
-```bash
-yarn build:es
-```
-
 * Publish:
+  
 ```bash
 yarn publish:build
 ```
 
-## Use as ES6 module:
+* Create a new component from another
+  
+```bash
+yarn cp
+```
+
+## Use as ES6 module
 
 When this app is published as npm package, it can be integrated easily in other applications, as ES6 module:
 
-Install
+* Install
+
 ```bash
-npm install <this-app-package>
+yarn install <this-app-package>
 ```
 
-In your App.js file:
-```bash
+* In your App.js file:
+
+```html
 import React, { Component } from 'react';
 import thisApp from '<this-app-package>';
 
@@ -70,12 +77,4 @@ class App extends Component {
 }
 
 export default App;
-```
-
-Props can be passed to the App:
-```bash
-<thisApp
-  props1={props1}
-  props2={props2}
-/>
 ```

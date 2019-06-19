@@ -6,14 +6,14 @@
   "main": "build/es/index.js",
   "dependencies": {
     "abortcontroller-polyfill": "^1.2.3",
-    "i18next": "^15.0.4",
+    "i18next": "^17.0.4",
     "i18next-browser-languagedetector": "^3.0.1",
-    "i18next-xhr-backend": "^2.0.1",
+    "i18next-xhr-backend": "^3.0.0",
     "jsts": "^2.0.3",
     "lodash": "^4.17.11",
     "node-sass": "^4.11.0",
     "ol": "^5.3.0",
-    "ole": "^0.0.4-beta.9",
+    "ole": "^1.0.0-beta.1",
     "proj4": "^2.5.0",
     "prop-types": "^15.6.2",
     "query-string": "^6.3.0",
@@ -43,8 +43,12 @@
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-prettier": "^3.0.1",
     "fetch-mock": "^7.2.5",
+    "generact": "^0.4.0",
+    "husky": "^2.4.1",
     "jest": "24.7.1",
     "jest-canvas-mock": "^2.0.0-alpha.2",
+    "jest-serializer-html": "^7.0.0",
+    "lint-staged": "^8.2.1",
     "node-fetch": "^2.3.0",
     "prettier": "^1.16.3",
     "react-styleguidist": "^9.0.2",
@@ -70,13 +74,14 @@
     "lint": "eslint 'src/**/*.js' && stylelint 'src/**/*.css' 'src/**/*.scss'",
     "cy:open": "cypress open",
     "cy:test": "yarn start & wait-on http://localhost:3000 & yarn cypress run",
-    "test": "react-scripts test --env=jsdom --transformIgnorePatterns \"/node_modules/(?!(jsts|ol|react-spatial)/).*/\"",
+    "test": "react-scripts test --env=jsdom --transformIgnorePatterns \"/node_modules/(?!(jsts|ol|react-spatial|ole)/).*/\"",
     "test:coverage": "yarn test --coverage --coverageDirectory=coverage",
     "doc": "styleguidist build",
     "doc:server": "styleguidist server",
     "eject": "react-scripts eject",
     "publish:build": "rm -rf build && yarn version && yarn run build:prod && yarn publish build/ --access public --non-interactive --no-git-tag-version",
-    "build:es": "bash ./scripts/build-es.sh"
+    "build:es": "bash ./scripts/build-es.sh",
+    "cp": "generact --root src/components"
   },
   "browserslist": [
     ">0.2%",
@@ -88,6 +93,9 @@
     "coverageReporters": [
       "text",
       "html"
+    ],
+    "snapshotSerializers": [
+      "jest-serializer-html"
     ]
   }
 }
