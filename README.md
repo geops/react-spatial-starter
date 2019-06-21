@@ -15,7 +15,7 @@ This library provides a starter kit to create a web map application based on [Re
 * cypress
 * react-spatial
 * eslint with airbnb
-* styleint
+* stylelint
 * prettier
 * sass
 
