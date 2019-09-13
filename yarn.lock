@@ -7348,10 +7348,10 @@ jss@^9.8.7:
     symbol-observable "^1.1.0"
     warning "^3.0.0"
 
-jsts@^2.0.3, jsts@^2.0.4:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/jsts/-/jsts-2.0.4.tgz#5fb91aaea070ebedf0121454ed90b074027e8241"
-  integrity sha512-YCfCuEgG9ynMFazjIH0YAtliFlaIcYmRqBY6EQP+VjNDEjuu4Il+91RDQWP4hAS7TXOeN/NYF/OL7Fmvg69pKg==
+jsts@^2.0.4, jsts@^2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/jsts/-/jsts-2.0.8.tgz#433c8f14e0537e2bfb46acadfd98884017aec06c"
+  integrity sha512-JsVWANyeQ2j8XLiPPdz1fTaaBnji8P6P95w/Rg487MW7qMAMKgc+86nw5iW/9kC5OlYvbOf4oG380Vyn90H9/g==
 
 jsx-ast-utils@^2.0.1:
   version "2.1.0"
