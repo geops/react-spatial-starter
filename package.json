@@ -16,7 +16,7 @@
     "ole": "^1.0.0-beta.1",
     "proj4": "^2.5.0",
     "prop-types": "^15.6.2",
-    "query-string": "^6.3.0",
+    "query-string": "^6.10.1",
     "react": "^16.7.0",
     "react-app-polyfill": "^1.0.1",
     "react-dom": "^16.7.0",
